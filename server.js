@@ -6,8 +6,10 @@ const app = express();
 const port = require('./config/settings').application_port;
 
 var db = require('./config/database');
+var controllers = require('./controller/index');
 
 app.use(bodyParser.json());
+app.use(controllers);
 
 db.connect(app.settings.env, (err) => {
   if (err) console.log(err);
